@@ -24,6 +24,10 @@ import com.myapplication.app.features.movies.data.repository.MovieRepository
 import com.myapplication.app.features.movies.domain.repository.IMovieRepository
 import com.myapplication.app.features.movies.domain.usecase.GetPopularMoviesUseCase
 import com.myapplication.app.features.movies.presentation.MoviesViewModel
+import com.myapplication.app.features.profile.data.repository.ProfileRepository
+import com.myapplication.app.features.profile.domain.repository.IProfileRepository
+import com.myapplication.app.features.profile.domain.usecase.GetUserUseCase
+import com.myapplication.app.features.profile.presentation.ProfileViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -87,4 +91,8 @@ val appModule = module {
     single<IDollarRepository> { DollarRepository(get(), get()) }
     factory { GetDollarUseCase(get()) }
     viewModel{ DollarViewModel(get()) }
+
+    single<IProfileRepository> { ProfileRepository() }
+    factory { GetUserUseCase(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

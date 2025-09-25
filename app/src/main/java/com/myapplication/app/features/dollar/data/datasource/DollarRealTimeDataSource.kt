@@ -20,15 +20,11 @@ class DollarRealTimeDataSource {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val value = snapshot.getValue(DollarModel::class.java)
                 if (value != null) {
-                    if (value.updatedAt == 0L) {
-                        value.updatedAt = System.currentTimeMillis()
-                    }
                     trySend(value)
                 }
             }
         }
-        val database = Firebase.database
-        val ref = database.getReference("dollar")
+        val ref = Firebase.database.getReference("dollar")
         ref.addValueEventListener(callback)
         awaitClose { ref.removeEventListener(callback) }
     }

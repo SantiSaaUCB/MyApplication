@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.myapplication.app.features.dollar.presentation.DollarScreen
 import com.myapplication.app.features.github.presentation.GithubScreen
 import com.myapplication.app.features.movies.presentation.MoviesScreen
+import com.myapplication.app.features.profile.presentation.ProfileScreen
 import com.myapplication.app.ui.components.BottomNavItem
 import com.myapplication.app.ui.components.FloatingBottomNavBar
 
@@ -64,7 +65,7 @@ fun AppNavigation() {
             composable(Screen.Github.route) { GithubScreen(modifier = Modifier) }
             composable(Screen.Movie.route) { MoviesScreen() }
             composable(Screen.Login.route) { Placeholder("Login") }
-            composable(Screen.Profile.route) { Placeholder("Profile") }
+            composable(Screen.Profile.route) { ProfileScreen() }
             composable(Screen.Dollar.route) {
                 DollarScreen()
             }

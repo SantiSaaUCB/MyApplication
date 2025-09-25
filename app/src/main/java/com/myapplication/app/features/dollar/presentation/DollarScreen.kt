@@ -143,8 +143,9 @@ private fun RateCard(
 }
 
 private fun formatTsLocal(tsRaw: Long): String {
+    if (tsRaw <= 0L) return "—"
     val tsMs = if (tsRaw < 1_000_000_000_000L) tsRaw * 1000 else tsRaw
-    val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-    sdf.timeZone = TimeZone.getTimeZone("America/La_Paz")
-    return sdf.format(Date(tsMs))
+    val sdf = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
+    sdf.timeZone = java.util.TimeZone.getTimeZone("America/La_Paz")
+    return sdf.format(java.util.Date(tsMs))
 }
