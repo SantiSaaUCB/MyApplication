@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.myapplication.app.features.dollar.data.database.dao.IDollarDao
 import com.myapplication.app.features.dollar.data.database.entity.DollarEntity
 
-@Database(entities = [DollarEntity::class], version = 1)
+@Database(entities = [DollarEntity::class], version = 2)
 abstract class AppRoomDatabase : RoomDatabase() {
     abstract fun dollarDao(): IDollarDao
     companion object {
@@ -16,6 +16,7 @@ abstract class AppRoomDatabase : RoomDatabase() {
         fun getDatabase(context: Context): AppRoomDatabase {
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(context, AppRoomDatabase::class.java, "dollar_db")
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also { Instance = it }
             }

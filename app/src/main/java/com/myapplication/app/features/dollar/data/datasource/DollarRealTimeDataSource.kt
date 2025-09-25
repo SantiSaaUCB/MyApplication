@@ -10,26 +10,26 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-class DollarRealTimeDataSource  {
+class DollarRealTimeDataSource {
 
     suspend fun getDollarUpdates(): Flow<DollarModel> = callbackFlow {
         val callback = object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-                close(p0.toException())
+            override fun onCancelled(error: DatabaseError) {
+                close(error.toException())
             }
-            override fun onDataChange(p0: DataSnapshot) {
-                val value = p0.getValue(DollarModel::class.java)
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val value = snapshot.getValue(DollarModel::class.java)
                 if (value != null) {
+                    if (value.updatedAt == 0L) {
+                        value.updatedAt = System.currentTimeMillis()
+                    }
                     trySend(value)
                 }
             }
         }
         val database = Firebase.database
-        val myRef = database.getReference("dollar")
-        myRef.addValueEventListener(callback)
-
-        awaitClose {
-            myRef.removeEventListener(callback)
-        }
+        val ref = database.getReference("dollar")
+        ref.addValueEventListener(callback)
+        awaitClose { ref.removeEventListener(callback) }
     }
 }
