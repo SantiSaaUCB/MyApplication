@@ -9,10 +9,10 @@ class ProfileRepository : IProfileRepository {
             fullName = "Santiago Saavedra",
             age = 21,
             idCard = "CB 9326030",
-            gender = "Masculino",
+            gender = "Male",
             phoneNumber = "+591 69503355",
             university = "Universidad Catolica Boliviana",
-            maritalStatus = "Casado"
+            maritalStatus = "Married"
         )
     }
 }

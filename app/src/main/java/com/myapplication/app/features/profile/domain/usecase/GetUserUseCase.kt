@@ -6,5 +6,5 @@ import com.myapplication.app.features.profile.domain.repository.IProfileReposito
 class GetUserUseCase(
     private val repository: IProfileRepository
 ) {
-    suspend fun invoke(): ProfileModel = repository.getProfile()
+    suspend operator fun invoke(): ProfileModel = repository.getProfile()
 }

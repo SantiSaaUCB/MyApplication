@@ -22,7 +22,6 @@ navigationCompose = "2.9.5"
 media3CommonKtx = "1.8.0"
 kspVersion = "2.2.20-2.0.3"
 room = "2.8.0"
-# firebaseDatabaseKtx = "22.0.1"
 googleGmsGoogleServices = "4.4.3"
 firebaseDatabase = "22.0.1"
 firebaseBom = "34.3.0"
@@ -63,9 +62,9 @@ room-rxjava3 = { group="androidx.room", name="room-rxjava3", version.ref="room"}
 room-guava = { group="androidx.room", name="room-guava", version.ref="room"}
 room-testing = { group="androidx.room", name="room-testing", version.ref="room"}
 room-paging = { group="androidx.room", name="room-paging", version.ref="room"}
-# firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version = "1.10.2" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
